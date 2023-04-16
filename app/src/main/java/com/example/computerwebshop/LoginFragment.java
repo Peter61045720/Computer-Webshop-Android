@@ -1,13 +1,14 @@
 package com.example.computerwebshop;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,8 +65,14 @@ public class LoginFragment extends Fragment {
 
         view.findViewById(R.id.registerTextView).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registerFragment);
+            public void onClick(View v) {
+                EditText emailET = view.findViewById(R.id.editTextEmailAddress);
+                EditText passwordET = view.findViewById(R.id.editTextPassword);
+
+                NavDirections action =
+                        LoginFragmentDirections.actionLoginFragmentToRegisterFragment(emailET.getText().toString(), passwordET.getText().toString());
+
+                Navigation.findNavController(view).navigate(action);
             }
         });
 
