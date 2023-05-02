@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/loginFragment"
-            android:icon="@drawable/ic_login"
-            android:title="Bejelentkezés" />
-    </group>
+    <item
+        android:id="@+id/loginFragment"
+        android:icon="@drawable/ic_login"
+        android:title="Bejelentkezés"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/logoutItem"
+        android:icon="@drawable/ic_logout"
+        android:title="Kijelentkezés"
+        android:visible="false" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_baseline_account"
+        android:title="Profil megtekintése"
+        android:visible="false" />
+
 </menu>

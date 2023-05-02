@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.computerwebshop.MainFragment"
+        android:name="com.example.computerwebshop.ui.MainFragment"
         android:label="Termékek"
         tools:layout="@layout/fragment_main">
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.computerwebshop.LoginFragment"
+        android:name="com.example.computerwebshop.ui.LoginFragment"
         android:label="Bejelentkezés"
         tools:layout="@layout/fragment_login">
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/productFragment"
-        android:name="com.example.computerwebshop.ProductFragment"
+        android:name="com.example.computerwebshop.ui.ProductFragment"
         android:label="fragment_product"
         tools:layout="@layout/fragment_product" >
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.computerwebshop.RegisterFragment"
+        android:name="com.example.computerwebshop.ui.RegisterFragment"
         android:label="Regisztráció"
         tools:layout="@layout/fragment_register">
         <action
@@ -66,8 +66,8 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.computerwebshop.ProfileFragment"
-        android:label="fragment_profile"
+        android:name="com.example.computerwebshop.ui.ProfileFragment"
+        android:label="Profil"
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_mainFragment"

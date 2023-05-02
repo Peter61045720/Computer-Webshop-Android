@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +19,9 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
     private NavController navController;
+    private NavigationView navView;
+    private AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +30,18 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
         NavHostFragment navHostFragment =
                 (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
         assert navHostFragment != null;
         navController = navHostFragment.getNavController();
-        NavigationView navView = findViewById(R.id.navView);
+        navView = findViewById(R.id.navView);
+        navView.getMenu().findItem(R.id.logoutItem).setOnMenuItemClickListener(menuItem -> {
+            Toast.makeText(getApplicationContext(), "Sikeres kijelentkezés", Toast.LENGTH_SHORT).show();
+            // TODO Firebase logout
+            return true;
+        });
 
         appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
@@ -45,8 +51,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        Menu navMenu = navView.getMenu();
+        boolean isUserSignedIn = true; // TODO: Firebase auth
+        navMenu.findItem(R.id.loginFragment).setVisible(!isUserSignedIn);
+        navMenu.findItem(R.id.profileFragment).setVisible(isUserSignedIn);
+        navMenu.findItem(R.id.logoutItem).setVisible(isUserSignedIn);
+        return super.onPrepareOptionsMenu(navMenu);
     }
 
     @Override
