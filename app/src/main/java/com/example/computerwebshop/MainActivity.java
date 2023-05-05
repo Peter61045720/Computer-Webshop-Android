@@ -2,6 +2,7 @@ package com.example.computerwebshop;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import com.example.computerwebshop.ui.MainFragmentDirections;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,6 +70,12 @@ public class MainActivity extends AppCompatActivity {
         navMenu.findItem(R.id.loginFragment).setVisible(!isUserSignedIn);
         navMenu.findItem(R.id.profileFragment).setVisible(isUserSignedIn);
         navMenu.findItem(R.id.logoutItem).setVisible(isUserSignedIn);
+
+        TextView navUsernameTV = findViewById(R.id.navUsernameTextView);
+        TextView navEmailTV = findViewById(R.id.navEmailTextView);
+        navUsernameTV.setText(isUserSignedIn ? Objects.requireNonNull(currentUser.getEmail()).split("@")[0].toUpperCase() : "Felhasználónév");
+        navEmailTV.setText(isUserSignedIn ? currentUser.getEmail() : "Email-cím");
+
         return super.onPrepareOptionsMenu(navMenu);
     }
 
