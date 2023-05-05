@@ -1,32 +1,36 @@
 package com.example.computerwebshop;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.computerwebshop.ui.MainFragmentDirections;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private NavController navController;
     private NavigationView navView;
     private AppBarConfiguration appBarConfiguration;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        auth = FirebaseAuth.getInstance();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -39,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
         navView = findViewById(R.id.navView);
         navView.getMenu().findItem(R.id.logoutItem).setOnMenuItemClickListener(menuItem -> {
             Toast.makeText(getApplicationContext(), "Sikeres kijelentkezés", Toast.LENGTH_SHORT).show();
-            // TODO Firebase logout
+            auth.signOut();
+            NavDirections action = MainFragmentDirections.actionMainFragmentToLoginFragment();
+            navController.navigate(action);
+            assert appBarConfiguration.getOpenableLayout() != null;
+            appBarConfiguration.getOpenableLayout().close();
+            invalidateOptionsMenu();
             return true;
         });
 
@@ -52,8 +61,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        FirebaseUser currentUser = auth.getCurrentUser();
         Menu navMenu = navView.getMenu();
-        boolean isUserSignedIn = true; // TODO: Firebase auth
+        boolean isUserSignedIn = currentUser != null;
         navMenu.findItem(R.id.loginFragment).setVisible(!isUserSignedIn);
         navMenu.findItem(R.id.profileFragment).setVisible(isUserSignedIn);
         navMenu.findItem(R.id.logoutItem).setVisible(isUserSignedIn);

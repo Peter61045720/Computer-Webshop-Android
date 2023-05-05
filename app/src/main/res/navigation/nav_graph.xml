@@ -63,6 +63,12 @@
         <argument
             android:name="password"
             app:argType="string" />
+        <action
+            android:id="@+id/action_registerFragment_to_profilePhotoFragment"
+            app:destination="@id/profilePhotoFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -71,6 +77,15 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilePhotoFragment"
+        android:name="com.example.computerwebshop.ui.ProfilePhotoFragment"
+        android:label="fragment_profile_photo"
+        tools:layout="@layout/fragment_profile_photo" >
+        <action
+            android:id="@+id/action_profilePhotoFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 </navigation>

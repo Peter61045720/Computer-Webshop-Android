@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "738619420947",
+    "project_id": "computer-webshop-android",
+    "storage_bucket": "computer-webshop-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738619420947:android:bb22796c6a90d8b0bb2ae6",
+        "android_client_info": {
+          "package_name": "com.example.computerwebshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738619420947-9tekqoefk0te6hm07bis6i1lmroqr2lp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDt9O-jpQn5I3XP_qBiM7oi13jHJ8JNTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738619420947-9tekqoefk0te6hm07bis6i1lmroqr2lp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
