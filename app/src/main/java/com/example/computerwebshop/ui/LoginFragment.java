@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -27,15 +28,18 @@ public class LoginFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
 
+        ProgressBar progressBar = view.findViewById(R.id.loginProgressBar);
         EditText emailET = view.findViewById(R.id.editTextEmailAddress);
         EditText passwordET = view.findViewById(R.id.editTextPassword);
 
         view.findViewById(R.id.loginButton).setOnClickListener(v -> {
+            progressBar.setVisibility(View.VISIBLE);
             String email = emailET.getText().toString();
             String password = passwordET.getText().toString();
             if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener((OnCompleteListener<AuthResult>) task -> {
+                            progressBar.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), "Sikeres bejelentkezés", Toast.LENGTH_SHORT).show();
                                 NavDirections action = LoginFragmentDirections.actionLoginFragmentToMainFragment();

@@ -19,7 +19,7 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        TextView loginStatusTV = (TextView) view.findViewById(R.id.textView);
+        TextView loginStatusTV = view.findViewById(R.id.textView);
         loginStatusTV.setText(currentUser != null ? "Bejelentkezett felhasználó" : "Nincs bejelentkezett felhasználó");
 
         return view;

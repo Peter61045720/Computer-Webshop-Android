@@ -6,7 +6,7 @@ public class Product {
     private String description;
     private double price;
     private boolean available;
-    // private [...] image;
+    private String imageID;
 
     public Product(String name, String description, double price, boolean available) {
         this.name = name;

@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">ComputerWebshop</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="register_str"><u>Regisztráljon itt!</u></string>
+    <string-array name="photo_ids">
+        <item>android</item>
+        <item>cat</item>
+        <item>controller</item>
+        <item>dog</item>
+        <item>flower</item>
+        <item>man</item>
+        <item>woman</item>
+    </string-array>
 </resources>
