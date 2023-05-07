@@ -43,11 +43,14 @@ public class MainFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view1, int pos, long id) {
                 String item = parent.getItemAtPosition(pos).toString();
                 if (item.equals("legolcsóbb elöl")) {
-                    query = FirebaseFirestore.getInstance().collection("products").orderBy("price", Query.Direction.ASCENDING);
+                    query = FirebaseFirestore.getInstance().collection("products")
+                            .orderBy("price", Query.Direction.ASCENDING);
                 } else if (item.equals("legdrágább elöl")) {
-                    query = FirebaseFirestore.getInstance().collection("products").orderBy("price", Query.Direction.DESCENDING);
+                    query = FirebaseFirestore.getInstance().collection("products")
+                            .orderBy("price", Query.Direction.DESCENDING);
                 } else {
-                    query = FirebaseFirestore.getInstance().collection("products").whereEqualTo("category", item);
+                    query = FirebaseFirestore.getInstance().collection("products")
+                            .whereEqualTo("category", item);
                 }
 
                 FirestoreRecyclerOptions<Product> newOptions = new FirestoreRecyclerOptions.Builder<Product>()

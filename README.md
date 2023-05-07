@@ -30,8 +30,8 @@ ConstraintLayout és még egy másik layout típus használata:
 ---
 
 Reszponzív:
-- különböző kijelző méreteken is jól jelennek meg a GUI elemek (akár tableten is): ezt a feltételt talán teljesíti az alkalmazás
-- elforgatás esetén is igényes marad a layout: -
+- különböző kijelző méreteken is jól jelennek meg a GUI elemek (akár tableten is): ezt külön nem teszteltem, de valószínűleg nagyobb kijelzőkön sem esik szét az alkalmazás
+- elforgatás esetén is igényes marad a layout: nem készítettem külön landscape layout-okat
 
 ---
 
@@ -48,7 +48,7 @@ Intentek használata: navigáció meg van valósítva az activityk/fragmensek k�
 Legalább egy Lifecycle Hook használata a teljes projektben:
 - onCreate nem számít
 - az alkalmazás funkcionalitásába értelmes módon beágyazott, azaz pl. nem csak egy logolás
-- RecyclerView (...)
+- onStart() és onStop() metódusok a [MainFragment.java](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/MainFragment.java)-ban (startListening() és stopListening, ezek elengedhetetlenek a RecyclerView-hoz)
 
 ---
 
@@ -56,15 +56,17 @@ Legalább egy olyan androidos erőforrás használata, amihez kell android permi
 
 ---
 
-Legalább egy notification vagy alam manager vagy job scheduler használata: notification manager (...)
+Legalább egy notification vagy alam manager vagy job scheduler használata: -
 
 ---
 
 CRUD műveletek mindegyike megvalósult és az adatbázis műveletek a konvenciónak megfelelően külön szálon történnek:
-- Create: [ProfilePhotoFragment.java:83](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/ProfilePhotoFragment.java#L83)
-- Read: [MainActivity.java:98](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/MainActivity.java#L98)
+- Create: [ProfilePhotoFragment.java:84](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/ProfilePhotoFragment.java#L84)
+- Read: [MainActivity.java:98](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/MainActivity.java#L98) és [ProfileFragment.java](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/ProfileFragment.java)
+- Update: [ProfileUpdaterFragment.java:107](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/ProfileUpdaterFragment.java#L107)
 - Delete: [ProfileFragment.java:48](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/ProfileFragment.java#L48)
 
 ---
 
-Legalább 2 komplex Firestore lekérdezés megvalósítása, amely indexet igényel (ide tartoznak: where feltétel, rendezés, léptetés, limitálás): (...)
+Legalább 2 komplex Firestore lekérdezés megvalósítása, amely indexet igényel (ide tartoznak: where feltétel, rendezés, léptetés, limitálás): 
+- 3db lekérdezés a [MainFragment.java:45](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/MainFragment.java#L45) környékén
