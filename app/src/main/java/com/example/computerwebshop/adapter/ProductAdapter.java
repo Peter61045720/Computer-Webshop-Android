@@ -20,6 +20,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class ProductAdapter extends FirestoreRecyclerAdapter<Product, ProductAdapter.ProductHolder> {
 
+    private OnItemClickListener listener;
     private Context context;
 
     public ProductAdapter(@NonNull FirestoreRecyclerOptions<Product> options) {
@@ -45,7 +46,7 @@ public class ProductAdapter extends FirestoreRecyclerAdapter<Product, ProductAda
         return new ProductHolder(view);
     }
 
-    public static class ProductHolder extends RecyclerView.ViewHolder {
+    public class ProductHolder extends RecyclerView.ViewHolder {
 
         private TextView productNameTV;
         private ImageView productImageView;
@@ -54,6 +55,21 @@ public class ProductAdapter extends FirestoreRecyclerAdapter<Product, ProductAda
             super(itemView);
             productNameTV = itemView.findViewById(R.id.productNameTextView);
             productImageView = itemView.findViewById(R.id.productImageView);
+
+            itemView.setOnClickListener(v -> {
+                int pos = getAbsoluteAdapterPosition();
+                if (pos != RecyclerView.NO_POSITION && listener != null) {
+                    listener.onItemClick(productNameTV.getText().toString());
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(String itemName);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 }

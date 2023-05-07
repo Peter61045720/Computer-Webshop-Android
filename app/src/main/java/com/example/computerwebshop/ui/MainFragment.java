@@ -7,9 +7,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,8 +18,6 @@ import com.example.computerwebshop.R;
 import com.example.computerwebshop.adapter.ProductAdapter;
 import com.example.computerwebshop.model.Product;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -79,6 +78,12 @@ public class MainFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.productsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(productAdapter);
+
+        productAdapter.setOnItemClickListener(itemName -> {
+            NavDirections action = MainFragmentDirections.actionMainFragmentToProductFragment(itemName);
+            Navigation.findNavController(view).navigate(action);
+            getActivity().invalidateOptionsMenu();
+        });
 
         return view;
     }

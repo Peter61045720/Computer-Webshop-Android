@@ -55,8 +55,8 @@
     <fragment
         android:id="@+id/productFragment"
         android:name="com.example.computerwebshop.ui.ProductFragment"
-        android:label="fragment_product"
-        tools:layout="@layout/fragment_product" >
+        android:label="Aktuális Termék"
+        tools:layout="@layout/fragment_product">
         <action
             android:id="@+id/action_productFragment_to_mainFragment"
             app:destination="@id/mainFragment"
@@ -64,6 +64,9 @@
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="productName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
