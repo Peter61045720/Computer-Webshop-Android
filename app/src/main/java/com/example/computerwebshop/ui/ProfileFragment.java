@@ -60,6 +60,12 @@ public class ProfileFragment extends Fragment {
             builder.show();
         });
 
+        view.findViewById(R.id.updateUserButton).setOnClickListener(v -> {
+            NavDirections action = ProfileFragmentDirections.actionProfileFragmentToProfileUpdaterFragment();
+            Navigation.findNavController(view).navigate(action);
+            getActivity().invalidateOptionsMenu();
+        });
+
         FirebaseStorage storage = FirebaseStorage.getInstance();
         photosRef = storage.getReference().child("profile_photos");
 

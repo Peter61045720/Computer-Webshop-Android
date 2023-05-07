@@ -103,6 +103,9 @@
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_profileUpdaterFragment"
+            app:destination="@id/profileUpdaterFragment" />
     </fragment>
     <fragment
         android:id="@+id/profilePhotoFragment"
@@ -128,5 +131,14 @@
         <argument
             android:name="country"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileUpdaterFragment"
+        android:name="com.example.computerwebshop.ui.ProfileUpdaterFragment"
+        android:label="Adatok megváltoztatása"
+        tools:layout="@layout/fragment_profile_updater">
+        <action
+            android:id="@+id/action_profileUpdaterFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

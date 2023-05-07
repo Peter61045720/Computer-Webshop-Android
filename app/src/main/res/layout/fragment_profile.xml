@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/currentPhotoImageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
             tools:src="@tools:sample/avatars" />
 
         <LinearLayout

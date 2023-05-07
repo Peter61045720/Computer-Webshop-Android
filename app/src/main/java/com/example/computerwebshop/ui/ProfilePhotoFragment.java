@@ -27,6 +27,7 @@ public class ProfilePhotoFragment extends Fragment {
     private StorageReference imageRef;
     private String photoItem;
     private FirebaseFirestore db;
+    private String uidArg;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,13 +61,13 @@ public class ProfilePhotoFragment extends Fragment {
             }
         });
 
-        String uidArg = ProfilePhotoFragmentArgs.fromBundle(getArguments()).getUserUID();
+        uidArg = ProfilePhotoFragmentArgs.fromBundle(getArguments()).getUserUID();
         String usernameArg = ProfilePhotoFragmentArgs.fromBundle(getArguments()).getUsername();
         String phoneArg = ProfilePhotoFragmentArgs.fromBundle(getArguments()).getPhone();
         String countryArg = ProfilePhotoFragmentArgs.fromBundle(getArguments()).getCountry();
 
         view.findViewById(R.id.choosePhotoButton).setOnClickListener(v -> {
-            uploadUserToDB(new User(uidArg, usernameArg, phoneArg, countryArg, photoItem));
+            uploadUserToDB(new User(usernameArg, phoneArg, countryArg, photoItem));
             NavDirections action = ProfilePhotoFragmentDirections.actionProfilePhotoFragmentToMainFragment();
             Navigation.findNavController(view).navigate(action);
             getActivity().invalidateOptionsMenu();
@@ -81,7 +82,7 @@ public class ProfilePhotoFragment extends Fragment {
     }
 
     private void uploadUserToDB(User user) {
-        db.collection("users").document(user.getUserUID()).set(user.getUserMap())
+        db.collection("users").document(uidArg).set(user)
                 .addOnSuccessListener(documentReference -> Toast.makeText(getActivity(), "Sikeres regisztráció", Toast.LENGTH_SHORT).show());
     }
 }

@@ -4,26 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class User {
-    private String userUID;
+
     private String username;
     private String phone;
     private String country;
-    private String photoID;
+    private String photo;
 
-    public User(String userUID, String username, String phone, String country, String photoID) {
-        this.userUID = userUID;
+    public User() {}
+
+    public User(String username, String phone, String country, String photo) {
         this.username = username;
         this.phone = phone;
         this.country = country;
-        this.photoID = photoID;
-    }
-
-    public String getUserUID() {
-        return userUID;
-    }
-
-    public void setUserUID(String userUID) {
-        this.userUID = userUID;
+        this.photo = photo;
     }
 
     public String getUsername() {
@@ -50,20 +43,21 @@ public class User {
         this.country = country;
     }
 
-    public String getPhotoID() {
-        return photoID;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setPhotoID(String photoID) {
-        this.photoID = photoID;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
-    public Map<String, Object> getUserMap() {
+    public Map<String, Object> _getUserMap() {
         Map<String, Object> user = new HashMap<>();
         user.put("username", username);
         user.put("phone", phone);
         user.put("country", country);
-        user.put("photo", photoID);
+        user.put("photo", photo);
         return user;
+
     }
 }
