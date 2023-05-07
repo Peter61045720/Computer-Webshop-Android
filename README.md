@@ -63,6 +63,7 @@ Legalább egy notification vagy alam manager vagy job scheduler használata: not
 CRUD műveletek mindegyike megvalósult és az adatbázis műveletek a konvenciónak megfelelően külön szálon történnek:
 - Create: [ProfilePhotoFragment.java:83](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/ProfilePhotoFragment.java#L83)
 - Read: [MainActivity.java:98](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/MainActivity.java#L98)
+- Delete: [ProfileFragment.java:48](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/ProfileFragment.java#L48)
 
 ---
 

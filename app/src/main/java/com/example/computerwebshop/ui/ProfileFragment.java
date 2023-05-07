@@ -6,8 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 import com.example.computerwebshop.R;
@@ -25,11 +29,36 @@ public class ProfileFragment extends Fragment {
     private TextView currentEmail;
     private TextView currentPhone;
     private TextView currentCountry;
+    private FirebaseUser currentUser;
+    private FirebaseFirestore db;
     private StorageReference photosRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+
+        view.findViewById(R.id.deleteUserButton).setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("Biztosan törli a fiókját?")
+                    .setTitle("Fiók Törlése");
+            builder.setPositiveButton("Igen", (dialog, id) -> {
+                db.collection("users").document(currentUser.getUid()).delete()
+                        .addOnSuccessListener(unused -> Toast.makeText(getActivity(), "Személyes adatok törlése sikeres", Toast.LENGTH_SHORT).show());
+                currentUser.delete().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getActivity(), "Felhasználói fiók törlése sikeres", Toast.LENGTH_SHORT).show();
+                        NavDirections action = ProfileFragmentDirections.actionProfileFragmentToMainFragment();
+                        Navigation.findNavController(view).navigate(action);
+                        getActivity().invalidateOptionsMenu();
+                    }
+                });
+            });
+            builder.setNegativeButton("Nem", (dialog, id) -> {});
+            builder.show();
+        });
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         photosRef = storage.getReference().child("profile_photos");
@@ -47,8 +76,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void readUserDataFromDB() {
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("users").document(currentUser.getUid()).get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
