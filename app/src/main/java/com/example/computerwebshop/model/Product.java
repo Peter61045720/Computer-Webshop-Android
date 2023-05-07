@@ -1,32 +1,29 @@
 package com.example.computerwebshop.model;
 
 public class Product {
-    private int id;
+    private String _id;
     private String name;
     private String description;
     private String category;
-    private double price;
-    private boolean available;
-    private String imageID;
+    private int price;
+    private String image;
 
-    public Product(String name, String description, double price, boolean available) {
+    public Product() { }
+
+    public Product(String name, String description, String category, int price, String image) {
         this.name = name;
         this.description = description;
+        this.category = category;
         this.price = price;
-        this.available = available;
+        this.image = image;
     }
 
-    public Product(int id, String name, String description, double price, boolean available) {
-        this(name, description, price, available);
-        this.id = id;
+    public String _getId() {
+        return _id;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void _setId(String _id) {
+        this._id = _id;
     }
 
     public String getName() {
@@ -45,19 +42,27 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public String getImage() {
+        return image;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

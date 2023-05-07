@@ -2,6 +2,7 @@
     <string name="app_name">ComputerWebshop</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="register_str"><u>Regisztráljon itt!</u></string>
+
     <string-array name="photo_ids">
         <item>android</item>
         <item>cat</item>
@@ -10,5 +11,14 @@
         <item>flower</item>
         <item>man</item>
         <item>woman</item>
+    </string-array>
+
+    <string-array name="sorting_options">
+        <item>legolcsóbb elöl</item>
+        <item>legdrágább elöl</item>
+        <item>videókártya</item>
+        <item>processzor</item>
+        <item>alaplap</item>
+        <item>RAM</item>
     </string-array>
 </resources>

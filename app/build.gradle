@@ -38,7 +38,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:22.0.0'
     implementation 'com.google.firebase:firebase-firestore:24.6.0'
     implementation 'com.google.firebase:firebase-storage:20.2.0'
-    implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
+    implementation 'com.firebaseui:firebase-ui-storage:8.0.2'
+    implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
 
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
