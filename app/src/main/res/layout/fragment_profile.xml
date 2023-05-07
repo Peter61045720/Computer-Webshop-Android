@@ -16,19 +16,94 @@
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center">
 
-        <TextView
-            android:id="@+id/emailTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_gravity="center" />
+        <ImageView
+            android:id="@+id/currentPhotoImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            tools:src="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/uidTextView"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_gravity="center" />
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Felhasználónév:" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email:" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Telefonszám:" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ország:" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="20dp">
+
+                <TextView
+                    android:id="@+id/currentUsernameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="username"
+                    android:gravity="end" />
+
+                <TextView
+                    android:id="@+id/currentEmailTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="email"
+                    android:gravity="end" />
+
+                <TextView
+                    android:id="@+id/currentPhoneTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="phone"
+                    android:gravity="end" />
+
+                <TextView
+                    android:id="@+id/currentCountryTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="country"
+                    android:gravity="end" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/updateUserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Adatok módosítása" />
+
+        <Button
+            android:id="@+id/deleteUserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fiók törlése"
+            android:backgroundTint="@color/red"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -91,6 +91,10 @@ public class RegisterFragment extends Fragment {
             Toast.makeText(getActivity(), "Hiba: Nem egyeznek a jelszavak", Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.GONE);
             return false;
+        }else if (TextUtils.getTrimmedLength(password) < 8) {
+            Toast.makeText(getActivity(), "Hiba: A jelszónak minimum 8 karakteresnek kell lennie", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return false;
         } else {
             return true;
         }
