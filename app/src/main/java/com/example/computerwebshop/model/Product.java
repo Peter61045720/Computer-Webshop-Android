@@ -1,7 +1,7 @@
 package com.example.computerwebshop.model;
 
 public class Product {
-    private String _id;
+
     private String name;
     private String description;
     private String category;
@@ -16,14 +16,6 @@ public class Product {
         this.category = category;
         this.price = price;
         this.image = image;
-    }
-
-    public String _getId() {
-        return _id;
-    }
-
-    public void _setId(String _id) {
-        this._id = _id;
     }
 
     public String getName() {

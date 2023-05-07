@@ -2,6 +2,8 @@
 
 ## Rövid bemutatás:
 SZTE Mobil Alkalmazásfejlesztés tantárgyra készített kötelező programom.
+## Technikai részletek:
+Általam használt emulátor Android Studio-ban: "Pixel 6 Api 32"
 ## Segítség a pontozáshoz:
 Firebase autentikáció meg van valósítva:
 - Be lehet jelentkezni: [LoginFragment.java:40](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/LoginFragment.java#L40)
@@ -48,7 +50,7 @@ Intentek használata: navigáció meg van valósítva az activityk/fragmensek k�
 Legalább egy Lifecycle Hook használata a teljes projektben:
 - onCreate nem számít
 - az alkalmazás funkcionalitásába értelmes módon beágyazott, azaz pl. nem csak egy logolás
-- onStart() és onStop() metódusok a [MainFragment.java](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/MainFragment.java)-ban (startListening() és stopListening, ezek elengedhetetlenek a RecyclerView-hoz)
+- onStart() és onStop() metódusok a [MainFragment.java](https://github.com/Peter61045720/Computer-Webshop-Android/blob/master/app/src/main/java/com/example/computerwebshop/ui/MainFragment.java)-ban (startListening() és stopListening(), ezek elengedhetetlenek a RecyclerView-hoz)
 
 ---
 
